@@ -10,25 +10,29 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/generate-resume', async (req, res) => {
-  const { name, email, phone, skills, experience, education, jobTitle } = req.body;
+  const { name, email, phone, skills, experience, education, jobTitle, location } = req.body;
 
-  const prompt = `Generate a professional resume for the following person:
-  
+const prompt = `Generate a professional resume for the following person:
+
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Job Title: ${jobTitle}
+Location: ${location}
 Skills: ${skills}
 Experience: ${experience}
 Education: ${education}
 
-Write a complete professional resume with:
-1. Professional Summary (3-4 lines)
-2. Skills Section
-3. Work Experience Section
-4. Education Section
-
-Make it ATS-friendly and professional.`;
+Instructions:
+- Write in plain text only
+- NO markdown, NO asterisks, NO bullet symbols
+- Use CAPITAL LETTERS for section headings
+- Use dashes (-) for bullet points
+- Keep it clean and ATS-friendly
+- Sections: Professional Summary, Skills, Work Experience, Education
+- Do NOT repeat contact information at the end
+- Start directly with PROFESSIONAL SUMMARY
+- Do NOT include Name or Contact at the end again`;
 
   try {
     const response = await axios.post(
