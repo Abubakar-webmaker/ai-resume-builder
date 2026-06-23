@@ -14,16 +14,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingText, setLoadingText] = useState('');
 
-  const loadingSteps = [
-    '🤖 Initializing AI...',
-    '📊 Analyzing your details...',
-    '✍️ Crafting your resume...',
-    '🎨 Applying finishing touches...',
-    '✅ Almost done...'
-  ];
-
-useEffect(() => {
+ useEffect(() => {
     if (loading) {
+      const loadingSteps = [
+        '🤖 Initializing AI...',
+        '📊 Analyzing your details...',
+        '✍️ Crafting your resume...',
+        '🎨 Applying finishing touches...',
+        '✅ Almost done...'
+      ];
       let i = 0;
       setLoadingText(loadingSteps[0]);
       const interval = setInterval(() => {
@@ -32,7 +31,7 @@ useEffect(() => {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [loading, loadingSteps]);
+  }, [loading]);
 
   const handleTemplateSelect = (id) => setSelectedTemplate(id);
   const handleNext = () => { if (selectedTemplate) setStep('form'); };
