@@ -22,7 +22,7 @@ function App() {
     '✅ Almost done...'
   ];
 
-  useEffect(() => {
+useEffect(() => {
     if (loading) {
       let i = 0;
       setLoadingText(loadingSteps[0]);
@@ -32,7 +32,7 @@ function App() {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [loading]);
+  }, [loading, loadingSteps]);
 
   const handleTemplateSelect = (id) => setSelectedTemplate(id);
   const handleNext = () => { if (selectedTemplate) setStep('form'); };
