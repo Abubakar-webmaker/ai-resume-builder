@@ -40,7 +40,7 @@ function App() {
     setFormData(data);
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/generate-resume', data);
+      const res = await axios.post('https://ai-resume-builder-dwh7.vercel.app/generate-resume', data);
       setResume(res.data.resume);
       setStep('preview');
       setTimeout(() => {
